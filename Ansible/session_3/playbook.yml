@@ -1,0 +1,11 @@
+- hosts: database
+  become: yes
+  roles:
+  - mysql
+
+- hosts: frontend
+  become: yes
+  roles:
+  - webserver
+  vars:
+    host_db: "{{ hostvars[groups['database'][0]]['ipv4']['address'] }}"

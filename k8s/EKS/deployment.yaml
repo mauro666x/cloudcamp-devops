@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcamp-api
+  labels:
+    app_name: cloudcamp-api
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app_name: cloudcamp-api
+  template:
+    metadata:
+      labels:
+        app_name: cloudcamp-api
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:stable
+        ports:
+        - containerPort: 80
+          name: http-web-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcamp-api
+spec:
+  type: LoadBalancer
+  selector:
+    app_name: cloudcamp-api
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc

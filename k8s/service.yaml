@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app_name: cloudcamp-api
+spec:
+  containers:
+  - name: nginx
+    image: nginx:stable
+    ports:
+    - containerPort: 80
+      name: http-web-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcamp-api
+spec:
+  selector:
+    app_name: cloudcamp-api
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc

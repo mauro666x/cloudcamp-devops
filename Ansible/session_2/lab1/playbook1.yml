@@ -1,0 +1,19 @@
+- name: Configurar servidores web
+  hosts: webservers
+  become: yes
+  roles:
+  - webservers
+
+- name: Actualizar sitio web si es necesario
+  hosts: webservers
+  become: yes
+  roles:
+  - role: update_css
+    when: update_type == "full_update"
+
+- name: language change
+  hosts: webservers
+  become: yes
+  roles:
+  - role: update_2
+    when: language == "english"

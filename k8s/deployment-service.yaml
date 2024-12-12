@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcamp-api
+  labels:
+    app_name: cloudcamp-api
+spec:
+  # modify replicas according to your case
+  replicas: 7
+  selector:
+    matchLabels:
+      app_name: cloudcamp-api
+  ## Definition de los pods
+  template:
+    metadata:
+      labels:
+        app_name: cloudcamp-api
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:stable
+        ports:
+        - containerPort: 80
+          name: http-web-svc

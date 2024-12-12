@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: guestbook
+    tier: frontend
+    environment: stage
+spec:
+  # modify replicas according to your case
+  replicas: 7
+  selector:
+    matchLabels:
+      tier: frontend
+  ## Definition de los pods
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: php-redis
+        image: nginx:alpine
