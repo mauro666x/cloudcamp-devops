@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "mi-bucket-cloudcamp-1111"
+  bucket = "mi-bucket-cloudcamp-mb"
 }
 
 resource "aws_s3_object" "object" {
-  # bucket = aws_s3_bucket.bucket.bucket
-  bucket = "mi-bucket-cloudcamp-1111"
+  bucket = aws_s3_bucket.bucket.bucket
+  # bucket = "mi-bucket-cloudcamp-mb"
   key    = "memes/terraform_apply.jpeg"
   source = "terraform_apply.jpeg"
   # depends_on = [aws_s3_bucket.bucket]
