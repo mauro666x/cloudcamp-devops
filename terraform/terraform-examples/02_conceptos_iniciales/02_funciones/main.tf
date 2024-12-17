@@ -15,5 +15,5 @@ resource "aws_s3_bucket" "bucket" {
 variable "bucket_suffix" {
   description = "Sufijo a agregar al nombre del bucket"
   type        = string
-  default     = "cloud-camp-2023-001"
+  default     = "cloud-camp-2024-03-mb"
 }

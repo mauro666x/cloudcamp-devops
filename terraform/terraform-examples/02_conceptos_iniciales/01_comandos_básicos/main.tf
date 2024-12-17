@@ -17,11 +17,16 @@ resource "aws_instance" "cloudcamp" {
   instance_type = "t2.micro"
 
   tags = {
-    bootcamp = "devops"
+    bootcamp = "devops-mauriciobenavides"
   }
 }
 
-#output "instance_public_dns" {
-#  description = "El DNS público de la instancia"
-#  value       = aws_instance.cloudcamp.public_dns
-#}
+output "instance_public_dns" {
+ description = "El DNS público de la instancia"
+ value       = aws_instance.cloudcamp.public_dns
+}
+
+output "instance_arn" {
+  description = "arn de la instancia"
+  value = aws_instance.cloudcamp.arn
+}
