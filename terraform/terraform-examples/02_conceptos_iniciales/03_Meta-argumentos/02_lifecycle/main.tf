@@ -3,7 +3,7 @@ data "aws_ami" "example"{
   owners      = ["amazon"]
 
   filter {
-    name   = "name"
+    name   = "mb-instance"
     values = ["al2023-ami-2023.*-x86_64"]
     # values = ["al2023-ami-2023.*arm64"]
   }
