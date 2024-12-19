@@ -18,5 +18,6 @@ resource "aws_instance" "cloudcamp" {
 
   tags = {
     bootcamp = "devops"
+    name = "instance-mauricio.benavides"
   }
 }
