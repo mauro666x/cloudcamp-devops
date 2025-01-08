@@ -7,14 +7,14 @@ provider "aws" {
 #}
 
 resource "aws_s3_bucket_versioning" "terraform_state_versioning" {
-  bucket = "cloudcamp-terraform-state-001"
+  bucket = "cloudcamp-terraform-state-mb-001"
   versioning_configuration {
     status = "Enabled"
   }
 }
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name           = "cloudcamp-ddb-lock"
+  name           = "cloudcamp-ddb-mb-lock"
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "LockID"
 
@@ -26,11 +26,11 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
 terraform {
   backend "s3" {
-    bucket         = "cloudcamp-terraform-state-001"
+    bucket         = "cloudcamp-terraform-state-mb-001"
     key            = "stage-cloudcamp/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    dynamodb_table = "cloudcamp-ddb-lock"
+    #dynamodb_table = "cloudcamp-ddb-mb-lock"
   }
 }
 
@@ -39,10 +39,10 @@ resource "aws_instance" "cloudcamp" {
   instance_type = "t2.micro"
   tags = {
     bootcamp = "devops"
-    Name= "DisneyPlus"
+    Name= "mauricio"
   }
 }
 
-#resource "time_sleep" "wait" {
-#  create_duration = "300s"
-#}
+resource "time_sleep" "wait" {
+ create_duration = "30s"
+}

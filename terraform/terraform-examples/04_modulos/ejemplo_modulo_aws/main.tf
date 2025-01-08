@@ -10,9 +10,9 @@ module "ec2-instance" {
 
   ami                = "ami-0889a44b331db0194"
   instance_type      = "t2.micro"
-  key_name           = "miprimerabk"
+  key_name           = "mauricio.benavides-key2"
 
   tags = {
-    bootcamp = "devops"
+    bootcamp = "devops-mb"
   }
 }

@@ -2,7 +2,7 @@
 
 terraform {
   backend "s3" {
-    bucket         = "cloudcamp-terraform-state-001"
+    bucket         = "mauricio-benavides-terraform-state"
     key            = "modulo-cloudcamp/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
